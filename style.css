@@ -1,0 +1,89 @@
+/* Set font styles */
+body {
+  background-color: aqua;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  margin: 0;
+}
+
+/* Set layout for header */
+header {
+  background-color: #0072bb;
+  color: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  justify-content: center;
+  padding: 20px;
+}
+
+header h1 {
+  font-size: 36px;
+  margin: 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+header label {
+  color: #fff;
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+header input {
+  font-size: 24px;
+  padding: 5px;
+}
+
+button {
+  background-color: #e8e8e8;
+  border: none;
+  color: #0072bb;
+  font-size: 20px;
+  padding: 5px 10px;
+}
+
+/* Set layout for main */
+main {
+  background-color: aqua;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  padding: 20px;
+}
+
+
+.container{
+  display: flex;
+  flex-direction: column;
+  padding-left: 15%;
+}
+.left-container{
+  background-color: #0072bb;
+display: flex;
+flex-direction: column;
+padding-left: 1%;
+padding-right: 2%;
+}
+#forecast{
+  background-color: #0072bb;
+  display: flex;
+}
+#forecast > div {
+  padding-left: 6%;
+}
+
+
+
+#current-weather{
+  background-color: #0072bb;
+padding-left: 44%;
+}
+#current-weather img,
+#forecast img {
+  display: block;
+  margin: 10px 0;
+}
