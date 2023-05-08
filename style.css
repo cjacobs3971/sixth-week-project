@@ -8,18 +8,15 @@ body {
 
 /* Set layout for header */
 header {
-  background-color: #0072bb;
-  color: #fff;
+  background-image: linear-gradient( to left,aqua ,#000000, aqua);
+  color: white;
   display: flex;
   justify-content: space-between;
   justify-content: center;
   padding: 20px;
 }
 
-header h1 {
-  font-size: 36px;
-  margin: 0;
-}
+
 
 form {
   display: flex;
@@ -57,7 +54,7 @@ main {
 
 .container{
  
-  padding-left: 15%;
+  padding-left: 7%;
 }
 .left-container{
   background-color: #0072bb;
@@ -65,16 +62,22 @@ display: flex;
 flex-direction: column;
 padding-left: 1%;
 padding-right: 2%;
+border: #000000;
+border-style: solid;
 }
+
 #forecast{
-  
+  background-image: linear-gradient( to right, red, yellow);
+  padding-left: 2%;
   display: flex;
 }
+
 #forecast > div {
-  padding-left: 6%;
+  padding-left: 2%;
   padding-right: 2%;
   border: #fff;
   border-style: solid;
+
 }
 
 
@@ -82,6 +85,8 @@ padding-right: 2%;
 #current-weather{
   background-color: #0072bb;
 padding-left: 44%;
+padding-top: 2%;
+border-radius: 3%;
 }
 #current-weather img,
 #forecast img {

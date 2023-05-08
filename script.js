@@ -1,4 +1,4 @@
-const apiKey = "";
+const apiKey = "776d32a6f5a516549583054da0a4371e";
 const searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
 
 const cityInput = document.getElementById("city-input");
@@ -32,44 +32,51 @@ function handleSearch(e) {
             renderSearchHistory();
 
             // Get weather data for city using coordinates
-            const lat = data.coord.lat;
-            const lon = data.coord.lon;
-            return fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`);
-        })
-        .then(response => response.json())
-        .then(data => {
-            // Render current weather and 5-day forecast
-            const currentWeather = data.list[0];
-            const forecast = data.list.slice(1, 6);
+            // Get weather data for city using coordinates
+const lat = data.coord.lat;
+const lon = data.coord.lon;
+return fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`);
+})
+.then(response => response.json())
+.then(data => {
+    // Render current weather and 5-day forecast
+    const currentWeather = data.list[0];
+    const forecast = data.list.slice(1, 6);
 
-            currentWeatherDiv.innerHTML = `
-                <h2>${city}</h2>
-                <p>Date: ${new Date(currentWeather.dt * 1000).toLocaleDateString()}</p>
-                <p>Temperature: ${kelvinToCelsius(currentWeather.main.temp)} &deg;F</p>
-                <p>Humidity: ${currentWeather.main.humidity} %</p>
-                <p>Wind Speed: ${currentWeather.wind.speed} m/s</p>
-                <img src="https://openweathermap.org/img/w/${currentWeather.weather[0].icon}.png" alt="${currentWeather.weather[0].description}">
-            `;
+    currentWeatherDiv.innerHTML = `
+        <h2>${city}</h2>
+        <p>Date: ${new Date(currentWeather.dt * 1000).toLocaleDateString()}</p>
+        <p>Temperature: ${kelvinToCelsius(currentWeather.main.temp)} &deg;F</p>
+        <p>Humidity: ${currentWeather.main.humidity} %</p>
+        <p>Wind Speed: ${currentWeather.wind.speed} m/s</p>
+        <img src="https://openweathermap.org/img/w/${currentWeather.weather[0].icon}.png" alt="${currentWeather.weather[0].description}">
+    `;
 
-            let forecastHtml = "<h2>5-Day Forecast:</h2>";
-            forecast.forEach(forecastItem => {
-                forecastHtml += `
-                    <div>
-                        <p>Date: ${new Date(forecastItem.dt * 1000).toLocaleDateString()}</p>
-                        <p>Temperature: ${kelvinToCelsius(forecastItem.main.temp)} &deg;F</p>
-                        <p>Humidity: ${forecastItem.main.humidity} %</p>
-                        <p>Wind Speed: ${forecastItem.wind.speed} m/s</p>
-                        <img src="https://openweathermap.org/img/w/${forecastItem.weather[0].icon}.png" alt="${forecastItem.weather[0].description}">
-                    </div>
-                `;
-            });
+    let forecastHtml = "<h2>5-Day Forecast:</h2>";
+    let date = new Date(); // Initialize with the current date
 
-            forecastDiv.innerHTML = forecastHtml;
-        })
-        .catch(error => {
-            console.error(error);
-            alert(error.message);
-        });
+    forecast.forEach(forecastItem => {
+        // Increase the date by 1 day
+        date.setDate(date.getDate() + 1);
+
+        forecastHtml += `
+            <div>
+                <p>Date: ${date.toLocaleDateString()}</p>
+                <p>Temperature: ${kelvinToCelsius(forecastItem.main.temp)} &deg;F</p>
+                <p>Humidity: ${forecastItem.main.humidity} %</p>
+                <p>Wind Speed: ${forecastItem.wind.speed} m/s</p>
+                <img src="https://openweathermap.org/img/w/${forecastItem.weather[0].icon}.png" alt="${forecastItem.weather[0].description}">
+            </div>
+        `;
+    });
+
+    forecastDiv.innerHTML = forecastHtml;
+})
+.catch(error => {
+    console.error(error);
+    alert(error.message);
+});
+
 
     // Clear input field
     cityInput.value = "";
