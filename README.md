@@ -1,2 +1,2 @@
 # sixth-week-project
-![Alt text](/relative/path/to/weather-screenschot.jpg?raw=true "weather-screenshot")
+![Alt text](./assets/weather-screenshot.jpg?raw=true "weather-screenshot")
