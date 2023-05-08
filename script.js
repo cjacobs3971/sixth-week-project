@@ -7,13 +7,13 @@ const searchHistoryDiv = document.getElementById("search-history");
 const currentWeatherDiv = document.getElementById("current-weather");
 const forecastDiv = document.getElementById("forecast");
 
-// Handle search form submission
+// Handling search form submission
 function handleSearch(e) {
     e.preventDefault();
 
     const city = cityInput.value.trim();
 
-    // Get city coordinates from OpenWeatherMap API
+    // Get coordinates from OpenWeatherMap API
     return fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`)
         .then(response => {
             if (!response.ok) {
@@ -26,13 +26,13 @@ function handleSearch(e) {
                 throw new Error("City name not found in response");
             }
 
-            // Save search to search history
+            // Save searches to search history
             searchHistory.unshift(data.name);
             localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
             renderSearchHistory();
 
-            // Get weather data for city using coordinates
-            // Get weather data for city using coordinates
+            // Get weather  using coordinates
+            // Get weather  using coordinates
 const lat = data.coord.lat;
 const lon = data.coord.lon;
 return fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`);
