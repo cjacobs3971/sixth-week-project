@@ -1,4 +1,4 @@
-const apiKey = "";
+const apiKey = "776d32a6f5a516549583054da0a4371e";
 const searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
 
 const cityInput = document.getElementById("city-input");
@@ -83,7 +83,7 @@ return fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${
 }
 
 
-    // Convert temperature from Kelvin to Celsius
+    // Convert temperature from Kelvin to Farenheit 
     function kelvinToCelsius(kelvin) {
     return ((kelvin - 273.15)* 9/5 +32).toFixed(1);
     }
